@@ -21,12 +21,11 @@ RUN pacman -Syyu --noconfirm \
     uvicorn \
     vim \
     wget
-
 # install grpcurl and schedule
 RUN set -eux && \
     curl -sSL https://github.com/fullstorydev/grpcurl/releases/download/v1.8.8/grpcurl_1.8.8_linux_$(uname -m).tar.gz | \
     tar -xz -C /usr/local/bin/ grpcurl && \
-    rm /usr/lib/python3.11/EXTERNALLY-MANAGED && \
+    rm /usr/lib/python3.12/EXTERNALLY-MANAGED && \
     pip install schedule
 
 COPY --from=ghcr.io/binaryholdings/cosmprund:v1.0.0 /usr/bin/cosmprund /usr/local/bin/cosmprund
